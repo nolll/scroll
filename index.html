@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+	<title>Scroll</title>
+	<script language="javascript" src="js/NavObj.js"></script>
+	<script language="javascript" src="js/main.js"></script>
+	<script language="javascript" src="js/RectObj.js"></script>
+	<script language="javascript" src="js/LayerDynObj.js"></script>
+	<script language="javascript" src="js/Scroll.js"></script>
+	
+	<script language="javascript">
+		
+		var s = new Scroll();
+		
+		function init() {
+			s.top = 100;
+			s.left = 100;
+			s.width = 400;
+			s.height = 200;
+			s.centerPoint = s.top + s.height / 2;
+			s.text = "Henrik testar scrollen";
+			s.letters = [];
+			s.letterSpacing = 10;
+			s.letterWidth = 10;
+			s.letterHeight = 15;
+			s.speed = 75;
+			s.step = 2;
+			s.amplitude = 100;
+			s.sine = [];
+			s.margin = 50;
+			s.init();
+			setTimeout("move()", s.speed);
+		}
+		
+		function move() {
+			for (var i = 0; i < s.letters.length; i++) {
+				s.letters[i].lay.moveTo(s.letters[i].lay.x - s.step, s.centerPoint + s.amplitude * s.sine[s.letters[i].lay.x - s.left]);
+			}
+			setTimeout("move()", s.speed);
+		}
+		
+		onload = init;
+		
+	</script>
+</head>
+
+<body>
+
+
+
+</body>
+</html>
