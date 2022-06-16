@@ -50,30 +50,30 @@
 <div id="borderdiv">
 
 <div id="windowdiv">
-<%
-theText = "razorfish developers"
-'theText = ucase(theText)
-for i = len(theText) to 1 step -1
-	thisChar = mid(theText, i, 1)
-%>
-	<div id="scrolldiv"><%=thisChar%></div>
-<%
-next
-%>
-	<div id="bardiv"><img src="baranim2.gif" width="400" height="49"></div>
+	<script>
+		var theText = 'razorfish developers';
+		for(var i = 0; i < theText.length; i++){
+			document.write(`<div>${theText[i]}</div>`);
+		}		
+	</script>
+
+	<!-- <div id="bardiv"><img src="baranim2.gif" width="400" height="49"></div> -->
 </div>
 
 </body>
 </html>
 
-<script language="javascript">
+<script>
+var windowDiv = document.getElementById('windowdiv');
+var letters = windowDiv.getElementsByTagName('div');
+
 var width = 720;
 var pos = width;
 var left = 0;
 var amplitude = 35;
 var top = 200;
 var pi = Math.PI;
-var numChars = document.all.scrolldiv.length;
+var numChars = letters.length;
 var firstPos = 0;
 var lastPos = numChars - 1;
 var lastTop = 0;
@@ -91,27 +91,26 @@ function paintSinus() {
 		var divtomove = lastPos - i;
 		var thisColor;
 		if (thisTop > lastTop) {
-			document.all.scrolldiv[divtomove].style.zIndex = 13;
+			letters[divtomove].style.zIndex = 13;
 			if (mathTop > 35 || mathTop < -35) thisColor = "#aaaaaa";
 			else if (mathTop > 30 || mathTop < -30) thisColor = "#bbbbbb";
 			else if (mathTop > 25 || mathTop < -25) thisColor = "#cccccc";
 			else if (mathTop > 20 || mathTop < -20) thisColor = "#dddddd";
 			else if (mathTop > 15 || mathTop < -15) thisColor = "#eeeeee";
 			else if (mathTop > 10 || mathTop < -10) thisColor = "#ffffff";
-			document.all.scrolldiv[divtomove].style.color = thisColor;
+			letters[divtomove].style.color = thisColor;
 		} else {
-			document.all.scrolldiv[divtomove].style.zIndex = 7;
-			document.all.scrolldiv[divtomove].style.color = "#999999";
+			letters[divtomove].style.zIndex = 7;
+			letters[divtomove].style.color = "#999999";
 		}
-		document.all.scrolldiv[divtomove].style.top = thisTop;
-		document.all.scrolldiv[i].style.left = thispos;
+		letters[divtomove].style.top = thisTop;
+		letters[i].style.left = thispos;
 		lastTop = thisTop;
 	}
 	pos = pos - horiSpeed;
 	if (pos == left) pos = width;
-	lastTop = document.all.scrolldiv[lastPos].style.pixelTop;
+	lastTop = letters[lastPos].style.pixelTop;
 }
-setInterval("paintSinus()", 20);
-//paintSinus();
+setInterval(paintSinus, 20);
 
 </script>
