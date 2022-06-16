@@ -82,15 +82,15 @@ function LayerDynObj_moveTo(x,y,changeInitVals) {
 		this.y = y;
 	}
 		
-	this.css.pixelLeft = this.x;
-	this.css.pixelTop = this.y;
+	this.css.left = this.x;
+	this.css.top = this.y;
 }
 
 function LayerDynObj_moveBy(x,y) {	
 	this.x += (x == null) ? 0 : x;
 	this.y += (y == null) ? 0 : y;
-	this.css.pixelLeft = this.x;
-	this.css.pixelTop = this.y;
+	this.css.left = this.x;
+	this.css.top = this.y;
 }
 
 function LayerDynObj_changeClip(top, right, bottom, left) {

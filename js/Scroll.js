@@ -19,11 +19,9 @@ function Scroll() {
 
 Scroll.prototype.init = function() {
 	for (var i = 0; i < this.text.length; i++) {
-		this.letters[i] = new Letter(this.text.substr(i,1), i, this.letterWidth, this.letterHeight);
+		this.letters[i] = new Letter(this.text.substring(i, i + 1), i, this.letterWidth, this.letterHeight);
 		this.letters[i].lay.moveTo(this.width + this.letterSpacing * i, this.centerPoint);
 	}
-	//this.background = new LayerDynObj("bg", this.left - this.margin, this.top - this.margin, this.width + this.margin * 2, this.height + this.margin * 2, true, 0, this.margin + "," + (this.width + this.margin) + "," + (this.height + this.margin) + "," + this.margin, "#cccccc", null, null);
-	//this.background = new LayerDynObj("bg", this.left, this.top, this.width, this.height, true, 0, null, "#cccccc", null, null);
 	this.calcSine();
 }
 
@@ -35,6 +33,5 @@ Scroll.prototype.calcSine = function() {
 }
 
 function Letter(letter, index, width, height) {
-	//LayerDynObj(id, left, top, width, height, visibility, zIndex, clip, bgColor, background, htmlContent)
 	this.lay = new LayerDynObj("letter" + index, 0, 0, width, height, true, 1, null, null, null, letter);
 }

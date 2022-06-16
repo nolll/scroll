@@ -23,20 +23,20 @@
 			s.letterSpacing = 10;
 			s.letterWidth = 10;
 			s.letterHeight = 15;
-			s.speed = 75;
+			s.speed = 20;
 			s.step = 2;
 			s.amplitude = 100;
 			s.sine = [];
 			s.margin = 50;
 			s.init();
-			setTimeout("move()", s.speed);
+			setTimeout(move, s.speed);
 		}
 		
 		function move() {
 			for (var i = 0; i < s.letters.length; i++) {
 				s.letters[i].lay.moveTo(s.letters[i].lay.x - s.step, s.centerPoint + s.amplitude * s.sine[s.letters[i].lay.x - s.left]);
 			}
-			setTimeout("move()", s.speed);
+			setTimeout(move, s.speed);
 		}
 		
 		onload = init;
